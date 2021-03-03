@@ -1,3 +1,5 @@
+$color-1: #d6e4ff;
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  max-width: 100%;
+  padding: 1rem;
+  background: $color-1;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
 }
