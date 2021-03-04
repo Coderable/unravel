@@ -1,42 +1,96 @@
 $color-1: #d6e4ff;
 
-.App {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+
+  @media only screen and (max-width: 1200px) {
+    max-width: 960px;
+    margin: auto;
+  }
+  @media only screen and (max-width: 960px) {
+    max-width: calc(100% - 30px);
+    margin: auto;
+  }
+}
+
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.half-wrap {
+  width: 50%;
+  max-width: 600px;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  background: white;
+
+  &.big {
+    padding: 1.5rem 1rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.btn-main {
+    background: $color-1;
+  }
+}
+
+.item-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &::after {
+    content: "";
+    display: block;
+    width: calc(100% / 3 - 20px);
+  }
+
+  .card-item {
+    width: calc(100% / 3 - 3rem);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    background: white;
+
+    img {
+      max-width: 100%;
+    }
+  }
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  min-height: calc(100vh - 50px);
+  background: #f9f9f9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+section {
+  padding: 2.5rem 0;
 }
 
 nav {
@@ -46,4 +100,24 @@ nav {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+  }
+
+  input {
+    font-size: 0.875rem;
+    width: 100%;
+    width: -webkit-fill-available;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    border: 1px solid;
+  }
 }

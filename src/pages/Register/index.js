@@ -4,10 +4,12 @@ import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-function Login() {
+function Register() {
   const history = useHistory();
-  const [isLoading, setIsloading] = useState(false);
+
   const [state, setState] = useState({
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
   });
@@ -18,36 +20,45 @@ function Login() {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("login submitted", state);
-    setIsloading(true);
+    console.log("register submitted", state);
+
     axios
-      .post("http://localhost:4000/user/login", state)
+      .post("http://localhost:4000/user/register", state)
       .then((response) => {
         console.log("res", response);
-        setIsloading(false);
         if (response.data.success) {
-          localStorage.setItem("token", response.data.data.token);
-          history.push("/");
+          alert("Success create account");
+          //   localStorage.setItem("token", response.data.data.token);
+          history.push("/login");
           // props.handleLogin();
         } else {
           alert(response.data.message);
         }
       })
       .catch((err) => {
-        setIsloading(false);
-        console.log("err", err.message);
+        alert(err.response.data);
+        console.log("err", err.response.data);
       });
   };
 
-  const { email, password } = state;
-
+  const { firstname, lastname, email, password } = state;
   return (
     <Layout>
-      <section id="login">
+      <section id="register">
         <div className="container half-wrap card big">
           <div>
-            <h4>Login</h4>
+            <h4>Register</h4>
             <form onSubmit={onSubmit}>
+              <Input
+                name="firstname"
+                value={firstname}
+                handleChange={handleChange}
+              />
+              <Input
+                name="lastname"
+                value={lastname}
+                handleChange={handleChange}
+              />
               <Input name="email" value={email} handleChange={handleChange} />
               <Input
                 name="password"
@@ -57,10 +68,15 @@ function Login() {
               />
               <button
                 type="submit"
-                disabled={email === "" || password === "" || isLoading}
+                disabled={
+                  firstname === "" ||
+                  lastname === "" ||
+                  email === "" ||
+                  password === ""
+                }
                 className="btn btn-main"
               >
-                {isLoading ? "Logging in..." : "Login"}
+                Register
               </button>
             </form>
           </div>
@@ -69,4 +85,4 @@ function Login() {
     </Layout>
   );
 }
-export default Login;
+export default Register;

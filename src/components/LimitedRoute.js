@@ -5,7 +5,8 @@ import jsonwebtoken from "jsonwebtoken";
 
 const LimitedRoute = ({ component: Component, user, ...rest }) => {
   const token = localStorage.getItem("token");
-  let decoded = token ? jsonwebtoken.verify(token, "stanhaha") : false;
+  let decoded = token ? jsonwebtoken.verify(token, "unravelstan") : false;
+  console.log("decoded", decoded);
   return (
     <Route
       {...rest}
