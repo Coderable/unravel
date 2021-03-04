@@ -23,7 +23,10 @@ function Register() {
     console.log("register submitted", state);
 
     axios
-      .post("http://localhost:4000/user/register", state)
+      .post(
+        "https://unravelserver-rgqnm.ondigitalocean.app/user/register",
+        state
+      )
       .then((response) => {
         console.log("res", response);
         if (response.data.success) {

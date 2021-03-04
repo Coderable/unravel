@@ -32,7 +32,7 @@ function Home() {
   useEffect(() => {
     setIsloading(true);
     axios
-      .get("http://localhost:4000/item/list")
+      .get("https://unravelserver-rgqnm.ondigitalocean.app/item/list")
       .then((res) => {
         console.log(res);
         setItems(res.data);

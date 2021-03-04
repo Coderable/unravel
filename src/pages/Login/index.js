@@ -21,7 +21,7 @@ function Login() {
     console.log("login submitted", state);
     setIsloading(true);
     axios
-      .post("http://localhost:4000/user/login", state)
+      .post("https://unravelserver-rgqnm.ondigitalocean.app/user/login", state)
       .then((response) => {
         console.log("res", response);
         setIsloading(false);
